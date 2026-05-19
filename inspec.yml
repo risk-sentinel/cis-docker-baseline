@@ -1,0 +1,139 @@
+name: cis-docker
+title: Docker CIS Baseline
+maintainer: Risk Sentinel
+copyright: Risk Sentinel
+copyright_email: support@risk-sentinel.org
+license: Apache-2.0
+summary: |
+  Validates Docker deployments against CIS Docker Benchmark v1.8.0.
+  Two target modes are supported:
+
+  - host_daemon: full Docker host (the consumer operates dockerd
+    themselves on EC2 / on-prem). All 118 controls are in scope.
+  - container_only: opaque container runtime (the consumer runs
+    workloads via a managed service like AWS Fargate that hides the
+    daemon and host). Sections 1, 2, 3, and 7 mark `inherited`
+    (AWS satisfies under the shared-responsibility model) or
+    `not-applicable` (Swarm not used at all) — see profile README.
+
+  Set `docker_target_mode: container_only` when running against an
+  AWS-Fargate-style managed runtime; leave at the host_daemon default
+  for any consumer who operates dockerd directly.
+version: 0.1.0
+inspec_version: '>= 5.0'
+
+inputs:
+  - name: docker_target_mode
+    type: string
+    value: host_daemon
+    description: >-
+      One of `host_daemon` or `container_only`. Drives the
+      implementation_status classification on §1 (host config), §2
+      (daemon config), §3 (daemon files), and §7 (Swarm) — controls
+      that the consumer literally cannot satisfy themselves when the
+      managed container runtime hides the underlying host.
+
+      - host_daemon (default) — sections 1/2/3 run their `file` and
+        `processes` checks against the local Docker host; section 7
+        runs Swarm-state checks. All controls tag `implemented`.
+      - container_only — those four sections become inherited /
+        not-applicable. Specifically: §1+§2+§3 tag `inherited` with
+        `inherited_from: aws-shared-responsibility` plus the standard
+        attestation references; §7 tags `not-applicable` because
+        Fargate (and most managed container runtimes) don't run
+        Docker Swarm at all.
+
+  - name: docker_image_user_allowlist
+    type: array
+    value: []
+    description: >-
+      Optional allowlist of acceptable container USER values for CIS
+      4.1. Empty (default) falls back to attestation. Non-empty
+      enables strict enforcement: every running container's USER
+      (as reported by `docker inspect`) must be in the list.
+
+      Example: ['nginx', 'app', '1000', '101']
+
+  - name: docker_authorized_registries
+    type: array
+    value: []
+    description: >-
+      Optional allowlist of registry URI prefixes for image-pull
+      sources. Empty falls back to attestation. Non-empty enables
+      enforcement: every running container's image must start with
+      one of the listed prefixes.
+
+      Mirrors the `trusted_image_registries` input on
+      `cis-aws-compute` — keep both populated together when running
+      both profiles against the same target.
+
+  - name: docker_socket_paths
+    type: array
+    value:
+      - /var/run/docker.sock
+      - /run/docker.sock
+    description: >-
+      Candidate paths for the Docker socket. CIS 5.32 (the socket
+      must not be mounted inside any container) iterates these to
+      find offending bind mounts. Override only when the host runs
+      dockerd with a non-default socket location.
+
+  - name: logging_strategy
+    type: string
+    value: custom
+    description: >-
+      How logging-related CIS controls are satisfied for this
+      consumer's compliance boundary. One of:
+
+      - 'aws_default' — AWS-managed / centralised / cross-account
+        logging is the satisfaction mechanism. Logging controls in
+        scope skip with an inheritance rationale citing the consumer's
+        documented logging-architecture attestation. Pair with
+        `logging_attestation_reference` to identify where that
+        architecture is documented.
+      - 'custom' — this account / workload operates its own logging
+        stack. Controls assert against `logging_requirements` (below).
+
+      Default 'custom' forces explicit declaration; flip to
+      'aws_default' with a populated `logging_attestation_reference`
+      when consolidated logging (e.g., a security-tooling account
+      consolidating CloudTrail, a centralised SIEM ingesting events,
+      or an Organizations-level audit trail) satisfies the boundary
+      requirement that this account's per-control checks would
+      otherwise assert per-account.
+
+  - name: logging_attestation_reference
+    type: string
+    value: ''
+    description: >-
+      Consulted only when `logging_strategy == 'aws_default'`. Free-
+      form reference to the consumer's documented logging-boundary
+      architecture (e.g., a doc path like
+      'security-architecture/logging-baseline.md §3', a URL, or a
+      ticket reference). Surfaces verbatim in the inheritance skip
+      message on every affected control so auditors can trace the
+      attestation back to the source.
+
+  - name: logging_requirements
+    type: hash
+    value: {}
+    description: >-
+      Consulted only when `logging_strategy == 'custom'`. Consumer-
+      specific logging requirements that controls assert against.
+      Recognised keys (extend per profile — see README "Logging
+      strategy" for the keys this profile reads):
+
+      - retention_days: numeric — minimum CloudWatch / S3-access-log
+        retention period.
+      - log_group_arn_prefix: string — assert that log destinations
+        start with this prefix.
+      - required_metric_filters: array of CIS rule IDs (e.g., ["5.1",
+        "5.7", "5.16"]) — the consumer commits to operating these
+        filters in this account; rules not in the list skip with the
+        boundary-inheritance rationale.
+      - metric_filter_overrides: hash keyed by CIS rule ID — per-rule
+        structured assertions beyond presence (e.g., {"5.7":
+        {"threshold": 3}}).
+
+supports:
+  - platform: container

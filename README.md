@@ -73,7 +73,7 @@ docker_image_user_allowlist:
   - app
   - '1000'
 docker_authorized_registries:
-  - 752531709667.dkr.ecr.us-east-1.amazonaws.com/
+  - 123456789012.dkr.ecr.us-east-1.amazonaws.com/
   - public.ecr.aws/myorg/
 ```
 

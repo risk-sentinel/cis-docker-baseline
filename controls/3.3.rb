@@ -1,0 +1,77 @@
+# encoding: UTF-8
+
+control 'C-3.3' do
+  title 'Ensure that docker.socket file ownership is set to root:root'
+  desc  "
+    You should verify that the `docker.socket` file ownership and group ownership are correctly set to `root`.
+
+    The `docker.socket` file contains sensitive parameters that may alter the behavior of the Docker remote API. For this reason, it should be owned and group owned by `root` in order to ensure that it is not modified by less privileged users.
+  "
+  desc  'rationale', "
+    You should verify that the `docker.socket` file ownership and group ownership are correctly set to `root`.
+
+    The `docker.socket` file contains sensitive parameters that may alter the behavior of the Docker remote API. For this reason, it should be owned and group owned by `root` in order to ensure that it is not modified by less privileged users.
+  "
+  desc  'check', "
+    Step 1: Find out the file location:
+    ```
+    systemctl show -p FragmentPath docker.socket
+    ```
+
+
+    Step 2: If the file does not exist, this recommendation is not applicable. If the file exists, execute the command below, including the correct file path to verify that the file is owned and group-owned by `root`.
+
+    For example,
+    ```
+    stat -c %U:%G /usr/lib/systemd/system/docker.socket | grep -v root:root 
+    ```
+    The command above should not return a value.
+  "
+  desc  'fix', "
+    Step 1: Find out the file location:
+    ```
+    systemctl show -p FragmentPath docker.socket
+    ```
+
+
+    Step 2: If the file does not exist, this recommendation is not applicable. If the file exists, execute the command below, including the correct file path to set the ownership and group ownership for the file to `root`.
+
+    For example,
+    ```
+    chown root:root /usr/lib/systemd/system/docker.socket
+    ```
+  "
+  impact 0.5
+  tag severity:              'medium'
+  tag nist:                  ['AC-2 c']
+  tag cci:                   ['CCI-002113']
+  tag cis_number:            '3.3'
+  tag cis_rid:               '3.3'
+  tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'
+  tag cis_rule_id:           'SV-0303r1_rule'
+  tag cis_version:           '1.8.0'
+  tag cis_level:             1
+  tag cis_scored:            true
+  if input('docker_target_mode') == 'container_only'
+    tag implementation_status:  'inherited'
+    tag inherited_from:         'aws-shared-responsibility'
+    tag attestation_references: ['AWS SOC 2 Type II', 'AWS FedRAMP Moderate', 'AWS FedRAMP High', 'AWS ISO 27001']
+  else
+    tag implementation_status:  'implemented'
+  end
+  tag exec_validated:           false
+
+  if input('docker_target_mode') == 'container_only'
+    describe 'AWS shared-responsibility inheritance' do
+      it 'is satisfied by AWS-managed controls — AWS owns systemd socket units on the Fargate host (evidence: AWS SOC 2 Type II, AWS FedRAMP Moderate, AWS FedRAMP High, AWS ISO 27001; AWS Artifact: https://console.aws.amazon.com/artifact/)' do
+        expect(true).to eq(true)
+      end
+    end
+  else
+    describe file('/usr/lib/systemd/system/docker.socket') do
+    it { should exist }
+    it { should be_owned_by 'root' }
+    its('group') { should eq 'root' }
+  end
+  end
+end

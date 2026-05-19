@@ -1,0 +1,42 @@
+# Consumer inputs for cis-docker.
+#
+# Override values per-environment via:
+#   cinc-auditor exec profiles/cis-docker \
+#     --input-file profiles/cis-docker/inputs.yml
+# or individually via --input name=value
+#
+# See inspec.yml for the full input catalogue and README.md for how
+# the dual-mode (host_daemon vs container_only) classification works.
+# A worked overlay for an AWS-Fargate-style runtime sits at
+# `examples/sparc.inputs.yml`.
+
+# ----- Target mode -----
+# 'host_daemon' (default) — full Docker host; consumer operates dockerd.
+# 'container_only' — opaque managed runtime (Fargate, Azure Container
+# Apps, etc.). Sections 1/2/3 tag inherited; §7 (Swarm) tags
+# not-applicable.
+docker_target_mode: host_daemon
+
+# ----- USER allowlist (CIS 4.1) -----
+# Empty (default) = falls back to non-root attestation. Non-empty =
+# strict enforcement of every running container's USER.
+# docker_image_user_allowlist:
+#   - nginx
+#   - app
+#   - '1000'
+
+# ----- Authorized image registries -----
+# Empty default falls back to attestation. Non-empty = each running
+# container's image URI must start with one of the listed prefixes.
+# Mirrors trusted_image_registries on cis-aws-compute — keep both
+# populated together when running both profiles against the same
+# target.
+# docker_authorized_registries:
+#   - <acct>.dkr.ecr.us-east-1.amazonaws.com/
+
+# ----- Docker socket paths (CIS 5.32) -----
+# Override only when the host runs dockerd with a non-default socket
+# location.
+# docker_socket_paths:
+#   - /var/run/docker.sock
+#   - /run/docker.sock
