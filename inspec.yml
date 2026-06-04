@@ -135,5 +135,39 @@ inputs:
         structured assertions beyond presence (e.g., {"5.7":
         {"threshold": 3}}).
 
+  # ---- document_attestation evidence-class bases (sparc-validate#154) ----
+  - name: leveraged_evidence_base
+    type: string
+    value: ''
+    description: >-
+      Base for leveraged-SYSTEM AWS authorizations (FedRAMP / SOC 2 / ISO). The 63
+      container_only inherited controls resolve their evidence manifest under this base.
+  - name: policy_provider_base
+    type: string
+    value: ''
+    description: >-
+      Base for policy-PROVIDER documents the boundary leverages (shared / templated / parent-org policies).
+  - name: boundary_docs_base
+    type: string
+    value: ''
+    description: >-
+      Base for the boundary system's OWN governance docs backing the 31 alternative attestations.
+  - name: inherited_evidence_uri
+    type: string
+    value: ''
+    description: >-
+      Shared override URI for the inherited (AWS shared-responsibility) controls. Empty ->
+      resolves via leveraged_evidence_base to the aws-soc2-type2 manifest; both unset -> Skip.
+  - name: leveraged_evidence_max_age_days
+    type: numeric
+    value: 365
+    description: >-
+      Staleness window (days) for the leveraged AWS evidence manifest.
+  - name: attestation_max_age_days
+    type: numeric
+    value: 365
+    description: >-
+      Staleness window (days) for the boundary policy attestations (31 alternative controls).
+
 supports:
   - platform: container
