@@ -1,0 +1,64 @@
+# =============================================================================
+# cis-docker-baseline — reference inputs
+#
+#   cp inputs/example.yml inputs/mine.yml   # edit, then run ON THE DOCKER HOST:
+#   cinc-auditor exec . -t local:// --input-file inputs/mine.yml
+#
+# READ THIS FIRST — this is a DAEMON AND HOST benchmark, not an image scanner.
+#
+# It assesses the Docker daemon's configuration, the host files backing it
+# (/etc/docker/daemon.json, systemd units, socket permissions) and the
+# containers that daemon is running. Pointing it at an application container
+# does not work: the container is not a Docker host, so the host-file controls
+# fail for reasons that have nothing to do with your security posture.
+#
+# It has to run WHERE THE DAEMON RUNS.
+# =============================================================================
+
+# ---- REQUIRED TO RUN --------------------------------------------------------
+
+# What is being assessed.
+#   host_daemon  a real Docker host — the intended mode, and the only one in
+#                which the host-file and daemon-configuration controls mean
+#                anything
+docker_target_mode: host_daemon
+
+# Paths to the Docker socket, for the permission and ownership controls.
+# EMPTY = the profile's default locations are used.
+docker_socket_paths: []
+
+# ---- POLICY -----------------------------------------------------------------
+
+# Registries images may be pulled from.
+# EMPTY = no registry policy is enforced and the control reports that it has
+# nothing to check against — not that every registry is trusted.
+#   docker_authorized_registries: ['registry.example.com']
+docker_authorized_registries: []
+
+# Users a container image may legitimately run as, beyond the default rule that
+# running as root is a finding.
+# EMPTY = only the root check applies.
+docker_image_user_allowlist: []
+
+# ---- LOGGING ----------------------------------------------------------------
+
+# How logging is satisfied for this boundary.
+#   custom  you define the requirements below
+# EMPTY logging_requirements = the logging control has nothing concrete to
+# compare against and skips with a rationale.
+logging_strategy: custom
+logging_requirements: {}
+logging_attestation_reference: ''
+
+# ---- ATTESTATION ------------------------------------------------------------
+
+# Evidence-class bases for the controls no daemon API can answer — host
+# hardening owned by another team, or a managed runtime where the daemon
+# configuration is the provider's responsibility.
+leveraged_evidence_base: ''
+policy_provider_base: ''
+boundary_docs_base: ''
+inherited_evidence_uri: ''
+
+leveraged_evidence_max_age_days: 365
+attestation_max_age_days: 365
