@@ -1,6 +1,6 @@
 # cis-docker-baseline
 
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=risk-sentinel_cis-docker-v1.8.0)](https://sonarcloud.io/summary/new_code?id=risk-sentinel_cis-docker-v1.8.0)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=risk-sentinel_cis-docker-baseline)](https://sonarcloud.io/summary/new_code?id=risk-sentinel_cis-docker-baseline)
 
 InSpec / CINC Auditor profile validating a **Docker host and daemon** against the
 **CIS Docker Benchmark v1.8.0** — 118 controls across host configuration, daemon
