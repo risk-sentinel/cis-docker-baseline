@@ -50,7 +50,7 @@ control 'C-4.2' do
   registries = Array(input('docker_authorized_registries'))
   if registries.empty?
     # No registry allowlist configured -> fall back to a boundary image-provenance
-    # attestation (sparc-validate#154). Empty -> Skip (preserves the prior rationale
+    # attestation. Empty -> Skip (preserves the prior rationale
     # + saf attest apply fallback).
     uri = input('c_4_2_attestation_uri', value: '')
     uri = attestation_uri(:boundary, 'C-4.2') if uri.to_s.empty?

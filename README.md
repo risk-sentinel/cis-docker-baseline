@@ -21,7 +21,7 @@ The single most important thing to know before running it. The profile assesses:
 **Pointing it at an application container does not work.** A container is not a
 Docker host: the host-file controls fail for reasons that have nothing to do with
 your security posture, and short-lived containers exit before they can be
-inspected. This was tried and reverted — see sparc-validate#244.
+inspected. This was tried and reverted.
 
 It has to run where the daemon runs:
 
