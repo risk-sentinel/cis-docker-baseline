@@ -7,8 +7,6 @@
 #
 # See inspec.yml for the full input catalogue and README.md for how
 # the dual-mode (host_daemon vs container_only) classification works.
-# A worked overlay for an AWS-Fargate-style runtime sits at
-# `examples/sparc.inputs.yml`.
 
 # ----- Target mode -----
 # 'host_daemon' (default) — full Docker host; consumer operates dockerd.
