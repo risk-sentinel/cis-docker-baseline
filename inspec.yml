@@ -173,5 +173,5 @@ supports:
   # `platform: os`, not `container`: Train's docker:// transport detects the
   # guest OS inside the container (e.g. alpine/3.20), never a `container`
   # platform, so a `container` gate skips the whole profile before any control
-  # runs — a green scan that assessed nothing. See #5.
+  # runs — a green scan that assessed nothing.
   - platform: os
