@@ -12,8 +12,8 @@ by mode, so the disposition is given per mode.
 | Disposition | Count | Notes |
 |---|---|---|
 | `implemented` | 15 | Direct assertions feasible from inside the container |
-| `inherited` → `:leveraged` | 63 | dockerd/host/runtime are AWS-managed; AWS authorization freshness-checked (#165) |
-| `alternative` → `:boundary` attest | 31 | image-provenance / per-workload policy not visible from inside the container; documented in #165 |
+| `inherited` → `:leveraged` | 63 | dockerd/host/runtime are AWS-managed; AWS authorization freshness-checked |
+| `alternative` → `:boundary` attest | 31 | image-provenance / per-workload policy not visible from inside the container |
 | not-applicable | 9 | host-only concerns N/A in container_only |
 
 In this mode the trust boundary is already fully dispositioned: nothing is
@@ -37,7 +37,7 @@ cis-nginx. Implementing 31 host checks *before* the build-time docker-exec path
 exists (add `train-docker` + a docker CLI to the scanner image, then
 `-t docker://`) would ship logic that **cannot be validated**,
 contrary to the verify-don't-trust principle (we'd be trusting our own unverified
-checks). They are therefore specified here and **blocked on #172**; once a docker
+checks). They are therefore specified here and **blocked on docker-target support**; once a docker
 target is execable, they become `implemented` and are exec-validated.
 
 Consumers on a managed container runtime use `container_only`, so this
