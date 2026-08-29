@@ -29,6 +29,7 @@ control 'C-4.6' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['IA-5 (1) (e)', 'SA-11 a']
+  tag ksi:                   ['KSI-IAM-APM', 'KSI-SCR-MIT']
   tag nist_r4:               ['IA-5 (1) (e)', 'SA-11 a']
   tag cci:                   ['CCI-000200', 'CCI-003171']
   tag cis_number:            '4.6'

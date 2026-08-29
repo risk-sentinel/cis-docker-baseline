@@ -31,6 +31,7 @@ control 'C-7.9' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['SI-4 (5)', 'AC-8 a']
+  tag ksi:                   ['KSI-INR-RIR', 'KSI-MLA-LET']
   tag nist_r4:               ['SI-4 (5)']
   tag cci:                   ['CCI-002663', 'CCI-000051']
   tag cis_number:            '7.9'

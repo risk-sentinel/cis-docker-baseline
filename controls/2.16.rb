@@ -39,6 +39,7 @@ control 'C-2.16' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['SA-8']
+  tag ksi:                   ['KSI-PIY-RSD']
   tag nist_r4:               ['SA-8']
   tag cci:                   ['CCI-000664']
   tag cis_number:            '2.16'
