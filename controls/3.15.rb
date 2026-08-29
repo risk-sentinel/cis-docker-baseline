@@ -36,6 +36,7 @@ control 'C-3.15' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['AC-3']
   tag cci:                   ['CCI-000213']
   tag cis_number:            '3.15'

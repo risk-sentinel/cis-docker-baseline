@@ -40,6 +40,7 @@ control 'C-2.8' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['SI-4 (11)', 'AC-17 (2)']
   tag cci:                   ['CCI-002668', 'CCI-000068']
   tag cis_number:            '2.8'

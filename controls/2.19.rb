@@ -24,6 +24,7 @@ control 'C-2.19' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['CM-7 a']
   tag cci:                   ['CCI-000381']
   tag cis_number:            '2.19'

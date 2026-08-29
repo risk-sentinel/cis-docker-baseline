@@ -29,6 +29,7 @@ control 'C-7.9' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['SI-4 (5)', 'AC-8 a']
   tag cci:                   ['CCI-002663', 'CCI-000051']
   tag cis_number:            '7.9'
