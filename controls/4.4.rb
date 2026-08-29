@@ -31,7 +31,10 @@ control 'C-4.4' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['RA-5 a', 'CA-5 a']
+  tag ksi:                   ['KSI-SCR-MON']
+  tag nist_r4:               ['CA-5 a', 'RA-5 a']
   tag cci:                   ['CCI-001055', 'CCI-000264']
   tag cis_number:            '4.4'
   tag cis_rid:               '4.4'

@@ -40,7 +40,10 @@ control 'C-5.14' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['SC-7 a']
+  tag ksi:                   ['KSI-CNA-ULN', 'KSI-SVC-EIS']
+  tag nist_r4:               ['SC-7 a']
   tag cci:                   ['CCI-001097']
   tag cis_number:            '5.14'
   tag cis_rid:               '5.14'

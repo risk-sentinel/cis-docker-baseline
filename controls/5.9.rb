@@ -30,7 +30,10 @@ control 'C-5.9' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['SI-4 (11)', 'AC-17 (1)']
+  tag ksi:                   ['KSI-IAM-ELP', 'KSI-MLA-LET', 'KSI-MLA-OSM']
+  tag nist_r4:               ['AC-17 (1)', 'SI-4 (11)']
   tag cci:                   ['CCI-002668', 'CCI-000067']
   tag cis_number:            '5.9'
   tag cis_rid:               '5.9'

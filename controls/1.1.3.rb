@@ -39,7 +39,10 @@ control 'C-1.1.3' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['AC-2 f', 'IA-2 (2)', 'AU-2 a']
+  tag ksi:                   ['KSI-CMT-LMC', 'KSI-IAM-APM', 'KSI-IAM-JIT', 'KSI-IAM-SNU', 'KSI-IAM-SUS', 'KSI-MLA-LET', 'KSI-MLA-OSM', 'KSI-MLA-RVL']
+  tag nist_r4:               ['AC-2 f', 'AU-2 a', 'IA-2 (2)']
   tag cci:                   ['CCI-000011', 'CCI-000766', 'CCI-000123']
   tag cis_number:            '1.1.3'
   tag cis_rid:               '1.1.3'

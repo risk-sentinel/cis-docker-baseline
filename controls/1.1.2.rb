@@ -23,7 +23,10 @@ control 'C-1.1.2' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['AC-2 i 1']
+  tag ksi:                   ['KSI-IAM-APM', 'KSI-IAM-JIT', 'KSI-IAM-SNU', 'KSI-IAM-SUS']
+  tag nist_r4:               ['AC-2 i 1']
   tag cci:                   ['CCI-002126']
   tag cis_number:            '1.1.2'
   tag cis_rid:               '1.1.2'

@@ -37,7 +37,10 @@ control 'C-6.2' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['AC-2 a']
+  tag ksi:                   ['KSI-IAM-APM', 'KSI-IAM-JIT', 'KSI-IAM-SNU', 'KSI-IAM-SUS']
+  tag nist_r4:               ['AC-2 a']
   tag cci:                   ['CCI-002110']
   tag cis_number:            '6.2'
   tag cis_rid:               '6.2'

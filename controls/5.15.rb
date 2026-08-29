@@ -30,7 +30,10 @@ control 'C-5.15' do
   "
   impact 0.5
   tag severity:              'medium'
+  tag severity_source:       'unassessed'
   tag nist:                  ['IA-5 (1) (e)']
+  tag ksi:                   ['KSI-IAM-APM']
+  tag nist_r4:               ['IA-5 (1) (e)']
   tag cci:                   ['CCI-000200']
   tag cis_number:            '5.15'
   tag cis_rid:               '5.15'
