@@ -38,6 +38,7 @@ control 'C-3.15' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['AC-3']
+  tag nist_r4:               ['AC-3']
   tag cci:                   ['CCI-000213']
   tag cis_number:            '3.15'
   tag cis_rid:               '3.15'

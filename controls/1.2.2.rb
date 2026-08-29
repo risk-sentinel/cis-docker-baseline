@@ -25,6 +25,7 @@ control 'C-1.2.2' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['CM-6 b']
+  tag nist_r4:               ['CM-6 b']
   tag cci:                   ['CCI-000366']
   tag cis_number:            '1.2.2'
   tag cis_rid:               '1.2.2'

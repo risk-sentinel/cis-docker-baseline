@@ -31,6 +31,7 @@ control 'C-4.11' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['MA-3 a', 'CA-5 a']
+  tag nist_r4:               ['CA-5 a', 'MA-3']
   tag cci:                   ['CCI-000865', 'CCI-000264']
   tag cis_number:            '4.11'
   tag cis_rid:               '4.11'

@@ -22,6 +22,7 @@ control 'C-4.12' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['SI-7 a']
+  tag nist_r4:               ['SI-7']
   tag cci:                   ['CCI-002704']
   tag cis_number:            '4.12'
   tag cis_rid:               '4.12'

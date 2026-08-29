@@ -47,6 +47,7 @@ control 'C-1.1.8' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['AU-3 a', 'SC-12 (3)']
+  tag nist_r4:               ['AU-3', 'SC-12 (3)']
   tag cci:                   ['CCI-000130', 'CCI-002447']
   tag cis_number:            '1.1.8'
   tag cis_rid:               '1.1.8'

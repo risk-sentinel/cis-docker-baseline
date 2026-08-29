@@ -36,6 +36,7 @@ control 'C-4.3' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['CM-7 a', 'IA-5 (1) (e)']
+  tag nist_r4:               ['CM-7 a', 'IA-5 (1) (e)']
   tag cci:                   ['CCI-000381', 'CCI-000200']
   tag cis_number:            '4.3'
   tag cis_rid:               '4.3'
