@@ -31,6 +31,7 @@ control 'C-5.31' do
   tag severity:              'medium'
   tag severity_source:       'unassessed'
   tag nist:                  ['AC-8 a']
+  tag nist_r4:               ['AC-8']
   tag cci:                   ['CCI-000051']
   tag cis_number:            '5.31'
   tag cis_rid:               '5.31'
