@@ -24,10 +24,9 @@ control 'C-1.2.2' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['CM-6 b']
-  tag ksi:                   ['KSI-CMT-LMC', 'KSI-CMT-RMV', 'KSI-MLA-EVC', 'KSI-SVC-ACM']
-  tag nist_r4:               ['CM-6 b']
-  tag cci:                   ['CCI-000366']
+  tag nist:                  ['SI-7 (15)', 'SR-11 a']
+  tag nist_r4:               ['SI-7 (15)']
+  tag cci:                   ['CCI-002740', 'CCI-005133', 'CCI-005132']
   tag cis_number:            '1.2.2'
   tag cis_rid:               '1.2.2'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'

@@ -24,10 +24,10 @@ control 'C-5.30' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['CM-7 a']
-  tag ksi:                   ['KSI-CMT-RMV', 'KSI-IAM-JIT']
-  tag nist_r4:               ['CM-7 a']
-  tag cci:                   ['CCI-000381']
+  tag nist:                  ['CM-7 (1) (b)', 'CM-7 b', 'CM-7 a', 'CM-7 (1) (a)']
+  tag ksi:                   ['KSI-CMT-RMV', 'KSI-CMT-RVP', 'KSI-CNA-RNT', 'KSI-IAM-JIT', 'KSI-SVC-ACM', 'KSI-SVC-EIS']
+  tag nist_r4:               ['CM-7 (1) (a)', 'CM-7 (1) (b)', 'CM-7 a', 'CM-7 b']
+  tag cci:                   ['CCI-001762', 'CCI-000382', 'CCI-000381', 'CCI-000384']
   tag cis_number:            '5.30'
   tag cis_rid:               '5.30'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'
