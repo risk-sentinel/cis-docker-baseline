@@ -30,10 +30,10 @@ control 'C-4.9' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['IA-5 (1) (e)', 'CM-6 a']
-  tag ksi:                   ['KSI-CMT-LMC', 'KSI-CMT-RMV', 'KSI-IAM-APM', 'KSI-MLA-EVC', 'KSI-SVC-ACM']
-  tag nist_r4:               ['CM-6 a', 'IA-5 (1) (e)']
-  tag cci:                   ['CCI-000200', 'CCI-000363']
+  tag nist:                  ['CM-6 a', 'CM-6 b', 'SA-4 (5) (a)']
+  tag ksi:                   ['KSI-CMT-LMC', 'KSI-CMT-RMV', 'KSI-MLA-EVC', 'KSI-SVC-ACM']
+  tag nist_r4:               ['CM-6 b', 'SA-4 (5) (a)']
+  tag cci:                   ['CCI-003941', 'CCI-000366', 'CCI-003109']
   tag cis_number:            '4.9'
   tag cis_rid:               '4.9'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'

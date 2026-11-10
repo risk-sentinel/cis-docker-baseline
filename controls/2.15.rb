@@ -36,10 +36,10 @@ control 'C-2.15' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['AC-2 i 1']
+  tag nist:                  ['AC-2 f', 'AC-2 i 1', 'AC-2 e', 'AC-2 (1)']
   tag ksi:                   ['KSI-IAM-APM', 'KSI-IAM-JIT', 'KSI-IAM-SNU', 'KSI-IAM-SUS']
-  tag nist_r4:               ['AC-2 i 1']
-  tag cci:                   ['CCI-002126']
+  tag nist_r4:               ['AC-2 (1)', 'AC-2 e', 'AC-2 f', 'AC-2 i 1']
+  tag cci:                   ['CCI-000011', 'CCI-002126', 'CCI-000010', 'CCI-000015']
   tag cis_number:            '2.15'
   tag cis_rid:               '2.15'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'
