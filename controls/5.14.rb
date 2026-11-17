@@ -41,10 +41,10 @@ control 'C-5.14' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['SC-7 a']
-  tag ksi:                   ['KSI-CNA-ULN', 'KSI-SVC-EIS']
-  tag nist_r4:               ['SC-7 a']
-  tag cci:                   ['CCI-001097']
+  tag nist:                  ['SC-7 (12)', 'SC-7 (5)', 'SC-7 a']
+  tag ksi:                   ['KSI-CNA-MAT', 'KSI-CNA-RNT', 'KSI-CNA-ULN', 'KSI-SVC-EIS']
+  tag nist_r4:               ['SC-7 (12)', 'SC-7 (5)', 'SC-7 a']
+  tag cci:                   ['CCI-002406', 'CCI-001109', 'CCI-001097']
   tag cis_number:            '5.14'
   tag cis_rid:               '5.14'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'

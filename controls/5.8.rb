@@ -27,10 +27,10 @@ control 'C-5.8' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['SI-4 (11)', 'AC-17 (1)']
-  tag ksi:                   ['KSI-IAM-ELP', 'KSI-MLA-LET', 'KSI-MLA-OSM']
-  tag nist_r4:               ['AC-17 (1)', 'SI-4 (11)']
-  tag cci:                   ['CCI-002668', 'CCI-000067']
+  tag nist:                  ['CM-7 (9) (b)', 'CM-7 b']
+  tag ksi:                   ['KSI-CMT-RMV', 'KSI-IAM-JIT']
+  tag nist_r4:               ['CM-7 b']
+  tag cci:                   ['CCI-003959', 'CCI-000382']
   tag cis_number:            '5.8'
   tag cis_rid:               '5.8'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'

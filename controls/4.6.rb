@@ -28,10 +28,9 @@ control 'C-4.6' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['IA-5 (1) (e)', 'SA-11 a']
-  tag ksi:                   ['KSI-IAM-APM', 'KSI-SCR-MIT']
-  tag nist_r4:               ['IA-5 (1) (e)', 'SA-11 a']
-  tag cci:                   ['CCI-000200', 'CCI-003171']
+  tag nist:                  ['SA-11 (1)', 'SA-11 (8)', 'SA-11 (9)']
+  tag nist_r4:               ['SA-11 (1)', 'SA-11 (8)']
+  tag cci:                   ['CCI-003179', 'CCI-003196', 'CCI-004814', 'CCI-003180']
   tag cis_number:            '4.6'
   tag cis_rid:               '4.6'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'

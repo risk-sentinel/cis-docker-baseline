@@ -41,10 +41,10 @@ control 'C-2.8' do
   impact 0.5
   tag severity:              'medium'
   tag severity_source:       'unassessed'
-  tag nist:                  ['SI-4 (11)', 'AC-17 (2)']
-  tag ksi:                   ['KSI-IAM-ELP', 'KSI-SVC-ASM', 'KSI-SVC-SIN']
-  tag nist_r4:               ['AC-17 (2)', 'SI-4 (11)']
-  tag cci:                   ['CCI-002668', 'CCI-000068']
+  tag nist:                  ['AC-17 a', 'AC-17 b', 'AC-17 (1)']
+  tag ksi:                   ['KSI-IAM-ELP', 'KSI-IAM-JIT', 'KSI-MLA-LET', 'KSI-MLA-OSM']
+  tag nist_r4:               ['AC-17 (1)', 'AC-17 a', 'AC-17 b']
+  tag cci:                   ['CCI-002311', 'CCI-000065', 'CCI-002314']
   tag cis_number:            '2.8'
   tag cis_rid:               '2.8'
   tag cis_benchmark:         'CIS Docker Benchmark v1.8.0'
